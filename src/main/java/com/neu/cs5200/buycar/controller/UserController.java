@@ -16,6 +16,7 @@ public class UserController {
     //Create User
     @PostMapping("/api/user")
     public User createUser(@RequestBody User user) {
+    	user.setEnable(true);
         return userRepository.save(user);
     }
 

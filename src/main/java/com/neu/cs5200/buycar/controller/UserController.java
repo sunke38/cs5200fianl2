@@ -80,7 +80,7 @@ public class UserController {
     //DeleteUserById
     @DeleteMapping("/api/user/{uid}")
     public void deleteUserById(@PathVariable("uid") Integer uid){
-        userRepository.deleteUserById(uid);
+    	userRepository.deleteUserById(uid);
     }
     @GetMapping("/api/user/profile")
     public User currentUserName(Principal principal) {
@@ -95,6 +95,20 @@ public class UserController {
     	}
         return you;
     }
-
+    @GetMapping("/api/userRole")
+    public String userRole(Principal principal){
+        String role;
+        try{
+            if(principal.getName() == null){
+                return "null";
+            } else {
+                User user = userRepository.findUserByUsername(principal.getName()).get(0);
+                role = user.getRole().toString();
+            }
+        } catch (Exception e){
+            return "null";
+        }
+        return role;
+    }
 
 }

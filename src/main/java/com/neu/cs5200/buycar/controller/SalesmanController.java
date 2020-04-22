@@ -1,6 +1,7 @@
 package com.neu.cs5200.buycar.controller;
 import com.neu.cs5200.buycar.model.Customer;
 import com.neu.cs5200.buycar.model.Message;
+import com.neu.cs5200.buycar.model.User;
 import com.neu.cs5200.buycar.model.Salesman;
 import com.neu.cs5200.buycar.repository.CustomerRepository;
 import com.neu.cs5200.buycar.repository.MessageRepository;
@@ -22,6 +23,7 @@ public class SalesmanController {
     //Create Salesman
     @PostMapping("/api/salesman")
     public Salesman createSalesman(@RequestBody Salesman salesman) {
+    	
         return salesmanRepository.save(salesman);
     }
 
